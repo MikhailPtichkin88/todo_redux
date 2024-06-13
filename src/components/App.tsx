@@ -5,7 +5,7 @@ import jpeg from "@/assets/jpegImage.jpeg"
 import Svg from "@/assets/svgImage.svg"
 export const App = () => {
 
-  return <div>
+  return <div data-testid={"App.DataTestId"}>
     <Link to={'/about'}>About</Link>
     <br />
     <Link to={"/shop"}>Shop</Link>

@@ -22,7 +22,7 @@ const isDev = mode === "development"
     resolve: buildResolvers(options),
     plugins: buildPlugins(options),
 
-    devtool: isDev && "inline-source-map",
+    devtool: isDev ? "eval-source-map" : 'source-map',
     devServer: isDev ? buildDevServer(options) : undefined
   }
 }
