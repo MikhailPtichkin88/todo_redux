@@ -1,1 +1,0 @@
-export {ShopLazy as Shop} from "./Spop.lazy"
