@@ -41,14 +41,22 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   }
 
   const scssLoader = {
-    test: /\.s[ac]ss$/i,
+    test: /\.scss$/i,
     use: [
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,
       cssLoader,
       "sass-loader",
     ],
   }
-
+  const tailwindCssLoader = {
+    test: /\.css$/i,
+    use: [
+      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      "css-loader",
+      "postcss-loader",
+    ],
+  }
+  
   // const tsLoader = {
   //   test: /\.tsx?$/,
   //   exclude: /node_modules/,
@@ -66,6 +74,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   return [
     svgLoader,
     assetLoader,
+    tailwindCssLoader,
     scssLoader,
     babelLoader
     // tsLoader,

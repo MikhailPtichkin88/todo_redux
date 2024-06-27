@@ -3,6 +3,7 @@
     {
       "id": "1",
       "username": "test user",
+      "email": "test_user@mail.ru",
       "password": "123",
       "avatar": "https://logowik.com/content/uploads/images/homer-simpson4924.jpg"
     }

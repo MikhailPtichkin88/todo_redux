@@ -16,3 +16,4 @@ declare module '*.png';
 declare module '*.gif';
 
 declare const __ENV__: "development" | "production"
+declare const __API__: string

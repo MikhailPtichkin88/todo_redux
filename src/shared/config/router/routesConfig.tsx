@@ -13,7 +13,7 @@ export enum AppRoutes {
 export const AppRoutesPaths: Record<AppRoutes, string>= {
   [AppRoutes.MAIN]: "/",
   [AppRoutes.LOGIN]: "/login",
-  [AppRoutes.NOT_FOUND]: 'not_found',
+  [AppRoutes.NOT_FOUND]: '*',
 }
 
 export const routesConfig: Record<AppRoutes, TRouteConfig> = {
@@ -27,7 +27,7 @@ export const routesConfig: Record<AppRoutes, TRouteConfig> = {
     element: <LoginPage />
   },
   [AppRoutes.NOT_FOUND]: {
-    path: AppRoutesPaths.login,
+    path: AppRoutesPaths.not_found,
     element: <NotFoundPage />
   },
 }

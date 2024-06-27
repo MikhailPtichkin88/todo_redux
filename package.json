@@ -30,11 +30,15 @@
     "fork-ts-checker-webpack-plugin": "^9.0.0",
     "html-webpack-plugin": "~5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.38",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.5.14",
     "react-refresh": "^0.14.2",
     "react-refresh-typescript": "^2.0.9",
     "sass": "^1.69.0",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
+    "tailwindcss": "^3.4.4",
     "ts-loader": "~9.5.0",
     "ts-node": "~10.9.1",
     "typescript": "~5.2.2",
@@ -43,11 +47,21 @@
     "webpack-dev-server": "~4.15.1"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "concurrently": "^8.0.1",
     "json-server": "^0.17.1",
+    "lucide-react": "^0.395.0",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
     "react-router-dom": "^6.16.0",
+    "sonner": "^1.5.0",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.5.2"
   }
 }
