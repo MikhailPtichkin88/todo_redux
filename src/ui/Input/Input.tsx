@@ -29,12 +29,12 @@ interface IProps extends InputProps{
   label:string
 }
 
-export function LabeledInput({label, id, wrapperClassName, ...props}:IProps) {
+export const LabeledInput = forwardRef(({label, id, wrapperClassName, ...props}:IProps, ref:any)=> {
   return (
     <div className={`grid w-full max-w-sm items-center gap-1.5 ${wrapperClassName}`}>
       <Label htmlFor={id}>{label}</Label>
-      <Input id={id} {...props} />
+      <Input ref={ref} id={id} {...props} />
     </div>
   )
-}
+})
 LabeledInput.displayName = "LabeledInput"

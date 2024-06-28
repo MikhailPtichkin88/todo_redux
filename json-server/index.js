@@ -24,14 +24,14 @@ server.use(async (req, res, next) => {
 
 server.post('/login', (req, res) => {
   try {
-    const { username, password } = req.body
+    const { email, password } = req.body
     const db = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8')
     )
-    const { users = [] } = db
+    const { user = [] } = db
 
-    const userFromBd = users.find(
-      (user) => user.username === username && user.password === password
+    const userFromBd = user.find(
+      (el) => el.email === email && el.password === password
     )
 
     if (userFromBd) {
@@ -46,6 +46,10 @@ server.post('/login', (req, res) => {
 
 // проверяем, авторизован ли пользователь
 server.use((req, res, next) => {
+
+  if(req.url === '/user' && req.method === "POST"){
+   return next()
+  }
   if (!req.headers.authorization) {
     return res.status(403).json({ message: 'AUTH ERROR' })
   }

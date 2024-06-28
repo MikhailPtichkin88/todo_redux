@@ -1,11 +1,16 @@
 {
-  "users": [
+  "user": [
     {
       "id": "1",
       "username": "test user",
       "email": "test_user@mail.ru",
       "password": "123",
       "avatar": "https://logowik.com/content/uploads/images/homer-simpson4924.jpg"
+    },
+    {
+      "email": "user1@mail.ru",
+      "password": "123456",
+      "id": "x4hvShz"
     }
   ]
 }

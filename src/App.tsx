@@ -1,13 +1,16 @@
 import { useEffect } from "react"
-import {AppRouter, useAuthStore} from "@/modules/AppRouter"
-import { HeaderAppBar } from "./modules/HeaderAppBar/ui/HeaderAppBar"
+import {AppRouter} from "@/modules/AppRouter"
+import { HeaderAppBar, useUserStore } from "@/modules/HeaderAppBar"
 
 
 export const App = () => {
-  const {checkAuthorized} = useAuthStore()
+
+  const {_inited, mockMeRequest} = useUserStore()
 
   useEffect(()=>{
-    checkAuthorized()
+    if(!_inited){
+      mockMeRequest()
+    }
   },[])
   
   return <div className="app">

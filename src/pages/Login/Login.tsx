@@ -1,12 +1,11 @@
+import { LoginForm } from "@/modules/LoginForm/ui/LoginForm"
 import { Button } from "@/ui/Button"
 import { toast } from "sonner"
 
  const Login = () => {
   
-  return <div>
-    <Button variant="outline" onClick={()=>toast.success("My toast", {
-      description: "description"
-    })}>Button</Button>
+  return <div className="w-full h-[calc(100vh_-_100px)] flex justify-center items-center">
+    <LoginForm />
   </div>
 }
 export default Login

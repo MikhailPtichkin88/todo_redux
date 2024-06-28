@@ -1,17 +1,21 @@
+import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { create } from 'zustand'
 
 
-interface IUserData {
+export interface IUserData {
   id: string
   username: string
   email?: string
   avatar?: string
+  password?:string
 }
 
-export interface IUserStore extends IUserData {
-  getIsUserInited: () => boolean;
+export interface IUserStore  {
+  _inited: boolean
+  user: IUserData
+  mockMeRequest: () => void;
   setUserData: (userData: IUserData) => void;
-  resetUserData: () => void;
+  logout: () => void;
 }
 
 const initialData: IUserData = {
@@ -21,21 +25,24 @@ const initialData: IUserData = {
   avatar: undefined,
 }
 
-export const useUserStore = create<IUserStore>((set, get) => ({
+export const useUserStore = create<IUserStore>((set) => ({
 
-  ...initialData,
+  _inited: false,
+  user: initialData,
 
-  getIsUserInited: () => {
-    const store = get();
-    return Boolean(store.id);
+  mockMeRequest: () => {
+    const data = localStorage.getItem(USER_LOCALSTORAGE_KEY)
+    if(data){
+      set((state)=>({...state, user: JSON.parse(data), _inited: true}))
+    }
   },
 
   setUserData: (userData: IUserData) => {
-    set(() => userData);
+    set(() => ({user: userData, _inited: true}));
   },
 
-  resetUserData: () => {
-    set(() => initialData);
+  logout: () => {
+    set(() => ({user: initialData, _inited:false}));
   }
 }));
 

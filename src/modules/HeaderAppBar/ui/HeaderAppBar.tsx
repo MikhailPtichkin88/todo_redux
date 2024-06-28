@@ -4,14 +4,18 @@ import cls from "./HeaderAppBar.module.scss"
 import logoIcon from "@/assets/images/internet.png"
 import { UserAvatar } from "@/components/UserAvatar"
 import { useUserStore } from "../store/useUserStore"
+import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 interface IHeaderAppBarProps {
 
 }
 
 export const HeaderAppBar = ({ }: IHeaderAppBarProps) => {
 
-  const { getIsUserInited, ...user } = useUserStore()
-
+  const { _inited, user, logout  } = useUserStore()
+  const onLogout = ()=>{
+    localStorage.removeItem(USER_LOCALSTORAGE_KEY)
+    logout()
+  }
   return <div className={cls.appBar}>
     <div className="container">
       <div className={cls.headerWrapper}>
@@ -22,13 +26,13 @@ export const HeaderAppBar = ({ }: IHeaderAppBarProps) => {
 
         <div className="self-center flex items-center gap-[10px]">
 
-          {getIsUserInited() &&
+          {_inited &&
             <p>{user?.email}</p>}
 
           <UserAvatar avatarLink={user?.avatar} />
 
-          {getIsUserInited() && (
-            <Button variant="outline" >Logout</Button>
+          {_inited && (
+            <Button onClick={onLogout} variant="outline" >Logout</Button>
           )
           }
         </div>
