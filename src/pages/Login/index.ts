@@ -1,1 +1,1 @@
-export {LoginLazy as LoginPage} from "./Login.lazy"
+export { LoginLazy as LoginPage } from './Login.lazy'

@@ -1,12 +1,6 @@
-import { ProfileForm } from "@/modules/ProfileForm"
+import { ProfileForm } from '@/modules/ProfileForm'
 
-  
-interface IProfilePageProps {
-  
-}
-
- const ProfilePage = ({	}:IProfilePageProps) => {
-  
-  return <ProfileForm/>
+const ProfilePage = () => {
+  return <ProfileForm />
 }
 export default ProfilePage

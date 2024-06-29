@@ -1,7 +1,6 @@
 import { ErrorPage } from '@/pages/ErrorPage'
 import React, { ErrorInfo, ReactNode, Suspense } from 'react'
 
-
 interface ErrorBounfaryProps {
   children: ReactNode
 }
@@ -32,7 +31,6 @@ export class ErrorBoundary extends React.Component<
     const { children } = this.props
     if (hasError) {
       return (
-        //@ts-ignore
         <Suspense fallback="">
           <ErrorPage />
         </Suspense>

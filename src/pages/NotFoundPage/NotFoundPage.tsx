@@ -5,11 +5,9 @@ interface NotFoundPageProps {
   className?: string
 }
 
-export const NotFoundPage = memo(({ className }: NotFoundPageProps) => {
+export const NotFoundPage = memo(({ className = '' }: NotFoundPageProps) => {
   return (
-    <div
-      className={cls.notfoundpage + " mt-[10px]"}
-    >
+    <div className={cls.notfoundpage + ` ${className}`}>
       Страница не найдена
     </div>
   )

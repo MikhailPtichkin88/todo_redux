@@ -1,0 +1,13 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged
+npm run build:prod
+npm run lint:ts:fix
+npm run lint:scss:fix
+
+git add .
+
+npx pretty-quick --staged
+
+

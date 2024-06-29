@@ -1,14 +1,14 @@
-import { createRoot } from "react-dom/client"
-import { BrowserRouter } from "react-router-dom"
-import { App } from "./App"
-import { ErrorBoundary } from "./modules/ErrorBoundary"
-import "./index.css"
-import { Toaster } from "sonner"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { App } from './App'
+import { ErrorBoundary } from './modules/ErrorBoundary'
+import './index.css'
+import { Toaster } from 'sonner'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-const root = document.getElementById("root")
+const root = document.getElementById('root')
 if (!root) {
-  throw new Error("root not found")
+  throw new Error('root not found')
 }
 
 const queryClient = new QueryClient()
@@ -24,5 +24,3 @@ container.render(
     </ErrorBoundary>
   </BrowserRouter>
 )
-
-

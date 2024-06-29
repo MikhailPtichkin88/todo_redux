@@ -10,10 +10,9 @@
   font-family: 'Museo Sans Cyrl';
   src: url('./assets/fonts/MuseoSansCyrl-Medium.woff2') format('woff2'),
     url('./assets/fonts/MuseoSansCyrl-Medium.woff') format('woff');
-      font-weight: 500;
+  font-weight: 500;
   font-style: normal;
 }
-
 
 @font-face {
   font-family: 'Museo Sans Cyrl';

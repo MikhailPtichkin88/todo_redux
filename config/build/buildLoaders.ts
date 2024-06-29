@@ -1,29 +1,32 @@
-import { ModuleOptions, runtime } from "webpack";
-import { BuildOptions } from "./types/types";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshTypeScript from "react-refresh-typescript"
-import { buildBabelLoader } from "./babel/buildBabelLoader";
-export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
-  const isDev = options.mode === "development"
+import { ModuleOptions, runtime } from 'webpack'
+import { BuildOptions } from './types/types'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import ReactRefreshTypeScript from 'react-refresh-typescript'
+import { buildBabelLoader } from './babel/buildBabelLoader'
+export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
+  const isDev = options.mode === 'development'
 
   const svgLoader = {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,
-    use: [{
-      loader: '@svgr/webpack', options: {
-        icon: true,
-        svgoConfig: {
-          plugins: [
-            {
-              name: "convertColors",
-              params: {
-                currentColor: true
-              }
-            }
-          ]
-        }
-      }
-    }],
+    use: [
+      {
+        loader: '@svgr/webpack',
+        options: {
+          icon: true,
+          svgoConfig: {
+            plugins: [
+              {
+                name: 'convertColors',
+                params: {
+                  currentColor: true,
+                },
+              },
+            ],
+          },
+        },
+      },
+    ],
   }
 
   const assetLoader = {
@@ -32,10 +35,10 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   }
 
   const cssLoader = {
-    loader: "css-loader",
+    loader: 'css-loader',
     options: {
       modules: {
-        localIdentName: isDev ? "[local]__[name]" : "[hash:base64:8]"
+        localIdentName: isDev ? '[local]__[name]' : '[hash:base64:8]',
       },
     },
   }
@@ -43,24 +46,24 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const scssLoader = {
     test: /\.scss$/i,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssLoader,
-      "sass-loader",
+      'sass-loader',
     ],
   }
   const tailwindCssLoader = {
     test: /\.css$/i,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-      "css-loader",
-      "postcss-loader",
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+      'css-loader',
+      'postcss-loader',
     ],
   }
-  
+
   // const tsLoader = {
   //   test: /\.tsx?$/,
   //   exclude: /node_modules/,
-  //   use: [{ loader: 'ts-loader', options: { 
+  //   use: [{ loader: 'ts-loader', options: {
   //     getCustomTransformers: () => ({
   //       before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
   //     }),
@@ -70,13 +73,12 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
 
   const babelLoader = buildBabelLoader(options)
 
-
   return [
     svgLoader,
     assetLoader,
     tailwindCssLoader,
     scssLoader,
-    babelLoader
+    babelLoader,
     // tsLoader,
   ]
 }

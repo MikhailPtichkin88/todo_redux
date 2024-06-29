@@ -1,19 +1,19 @@
-import { PluginItem } from "@babel/core";
+import { PluginItem } from '@babel/core'
 
-export function removeDataTestIdBabelPlugin ():PluginItem {
+export function removeDataTestIdBabelPlugin(): PluginItem {
   return {
     visitor: {
-      Program(path, state){
-        const forbiddenProps = state.opts.props as any[] || []
-          path.traverse({
-            JSXIdentifier(current){
-              const nodeName = current.node.name
-              if(forbiddenProps.includes(nodeName)){
-                current.parentPath.remove()
-              }
+      Program(path, state) {
+        const forbiddenProps = (state.opts.props as any[]) || []
+        path.traverse({
+          JSXIdentifier(current) {
+            const nodeName = current.node.name
+            if (forbiddenProps.includes(nodeName)) {
+              current.parentPath.remove()
             }
-          })
-      }
-    }
+          },
+        })
+      },
+    },
   }
 }

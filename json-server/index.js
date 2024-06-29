@@ -1,8 +1,6 @@
-
 const fs = require('fs')
 const jsonServer = require('json-server')
 const path = require('path')
-
 
 const http = require('http')
 
@@ -20,7 +18,6 @@ server.use(async (req, res, next) => {
   })
   next()
 })
-
 
 server.post('/login', (req, res) => {
   try {
@@ -46,9 +43,8 @@ server.post('/login', (req, res) => {
 
 // проверяем, авторизован ли пользователь
 server.use((req, res, next) => {
-
-  if(req.url === '/user' && req.method === "POST"){
-   return next()
+  if (req.url === '/user' && req.method === 'POST') {
+    return next()
   }
   if (!req.headers.authorization) {
     return res.status(403).json({ message: 'AUTH ERROR' })

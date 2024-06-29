@@ -1,3 +1,3 @@
-import React from "react";
+import React from 'react'
 
-export const LoginLazy = React.lazy(()=>import("./Login"))
+export const LoginLazy = React.lazy(() => import('./Login'))
