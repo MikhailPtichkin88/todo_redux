@@ -8,7 +8,7 @@ import { useUserStore } from "@/modules/HeaderAppBar/store/useUserStore"
 
 export const AppRouter = () => {
   const {_inited} = useUserStore()
-  console.log(_inited)
+
   const renderWithWrapper = useCallback((route: TRouteConfig) => {
     const element = (
       <Suspense fallback={"Loading..."}>{route.element}</Suspense>
@@ -27,5 +27,6 @@ export const AppRouter = () => {
       />
     )
   }, [_inited])
+  
   return <Routes>{Object.values(routesConfig).map(renderWithWrapper)}</Routes>
 }

@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom"
-import { AppRoutes } from "../../../../shared/config/router/routesConfig"
+import { AppRoutesPaths } from "@/shared/config/router/routesConfig"
 
   
 interface IRequireAuthProps {
@@ -11,7 +11,7 @@ export const RequireAuth = ({children, isAuthorized}:IRequireAuthProps) => {
   const location = useLocation()
 
   if(!isAuthorized){
-    return <Navigate to={AppRoutes.LOGIN} state={{ from: location }} replace/>
+    return <Navigate to={AppRoutesPaths.login} state={{ from: location }} replace/>
   }
   return children
 }

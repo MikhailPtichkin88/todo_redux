@@ -71,10 +71,12 @@ export const LoginForm = () => {
             }
           })}
         />
+        
         {
           errors?.email?.message &&
-          <span className={cls.error}>{errors?.email?.message}</span>
+          <span className={cls.error}>{errors.email.message}</span>
         }
+
         <LabeledInput
           type="password"
           label="password"
