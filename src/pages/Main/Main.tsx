@@ -1,4 +1,4 @@
 const Main = () => {
-  return <div>Main</div>
+  return <div data-testid="MainPage">Main</div>
 }
 export default Main

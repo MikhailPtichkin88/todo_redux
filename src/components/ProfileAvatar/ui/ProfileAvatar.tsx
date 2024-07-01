@@ -19,7 +19,11 @@ export const ProfileAvatar = ({
   }
 
   return (
-    <NavLink to={'/profile'} className={wrapperClassName}>
+    <NavLink
+      to={'/profile'}
+      className={wrapperClassName}
+      data-testid="ProfileAvatar"
+    >
       <UserAvatar avatarLink={avatarLink} className={className} />
     </NavLink>
   )

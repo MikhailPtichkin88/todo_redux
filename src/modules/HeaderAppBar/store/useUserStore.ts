@@ -17,7 +17,7 @@ export interface IUserStore {
   logout: () => void
 }
 
-const initialData: IUserData = {
+export const initialData: IUserData = {
   id: '',
   username: '',
   email: undefined,

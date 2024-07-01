@@ -12,24 +12,34 @@ export const HeaderAppBar = () => {
     localStorage.removeItem(USER_LOCALSTORAGE_KEY)
     logout()
   }
+
   return (
     <div className={cls.appBar}>
       <div className="container">
         <div className={cls.headerWrapper}>
-          <NavLink to={'/'}>
+          <NavLink to={'/'} data-testid="LogoLink">
             <div className="flex items-center gap-[5px]">
-              <img src={logoIcon} alt="logo internet icon" />
+              <img
+                src={`${typeof logoIcon === 'function' ? '' : logoIcon}`}
+                alt="logo internet icon"
+              />
               <span className="font-medium text-[20px]">Logo</span>
             </div>
           </NavLink>
 
           <div className="self-center flex items-center gap-[10px]">
-            {_inited && <p>{user?.username || user?.email}</p>}
+            {_inited && (
+              <p data-testid="UserName">{user?.username || user?.email}</p>
+            )}
 
-            <ProfileAvatar inited={_inited} avatarLink={user?.avatar} />
+            <ProfileAvatar inited={_inited} avatarLink={user?.avatar ?? ''} />
 
             {_inited && (
-              <Button onClick={onLogout} variant="outline">
+              <Button
+                data-testid="LogoutBtn"
+                onClick={onLogout}
+                variant="outline"
+              >
                 Logout
               </Button>
             )}

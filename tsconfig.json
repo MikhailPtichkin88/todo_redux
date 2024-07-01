@@ -9,13 +9,13 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "types": ["jest", "@types/jest", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/modules/*":  ["./src/modules/*"],
-      "@/ui/*":  ["./src/ui/*"],
+      "@/modules/*": ["./src/modules/*"],
+      "@/ui/*": ["./src/ui/*"]
     }
-
   },
   "ts-node": {
     "compilerOptions": {

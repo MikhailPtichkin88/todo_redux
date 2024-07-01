@@ -7,7 +7,10 @@ interface NotFoundPageProps {
 
 export const NotFoundPage = memo(({ className = '' }: NotFoundPageProps) => {
   return (
-    <div className={cls.notfoundpage + ` ${className}`}>
+    <div
+      className={cls.notfoundpage + ` ${className}`}
+      data-testid="NotFoundPage"
+    >
       Страница не найдена
     </div>
   )

@@ -12,7 +12,7 @@ export const UserAvatar = ({
   height = 50,
   ...props
 }: IUserAvatarProps) => {
-  const [src, setSrc] = useState('')
+  const [src, setSrc] = useState(avatarLink ?? placeholder)
 
   useEffect(() => {
     if (avatarLink) {

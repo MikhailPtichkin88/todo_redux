@@ -1,20 +1,17 @@
 import { Card, CardContent, CardFooter, CardTitle } from '@/ui/Card'
 import cls from './LoginForm.module.scss'
 
-import { LabeledInput } from '@/ui/Input'
-import { Button } from '@/ui/Button'
-import { useForm } from 'react-hook-form'
-import { useEffect } from 'react'
-import { useMutation } from '@tanstack/react-query'
-import { IAuthForm, authService } from '../api/api'
-import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
-import { toast } from 'sonner'
-import { Navigate, useNavigate } from 'react-router-dom'
 import { useUserStore } from '@/modules/HeaderAppBar'
+import { Button } from '@/ui/Button'
+import { LabeledInput } from '@/ui/Input'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { Navigate } from 'react-router-dom'
+import { IAuthForm } from '../api/api'
+import { useAuth } from '../hooks/useAuth'
 
 export const LoginForm = () => {
   const { _inited, setUserData } = useUserStore()
-  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -22,35 +19,10 @@ export const LoginForm = () => {
     reset,
   } = useForm<IAuthForm>({ mode: 'onBlur' })
 
-  const { mutate } = useMutation({
-    mutationKey: ['auth'],
-    mutationFn: ({
-      data,
-      type,
-    }: {
-      data: IAuthForm
-      type: 'login' | 'register'
-    }) => {
-      return authService.main(data, type)
-    },
-    onSuccess: (data, { type }) => {
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data))
-      setUserData(data)
-      toast.success(`You have successfully ${type}`)
-      reset()
-      navigate('/')
-    },
-    onError: (error, { type }) => {
-      console.error(error)
-      toast.error(`${type} request failed`, {
-        description: error?.message ?? '',
-      })
-      reset()
-    },
-  })
+  const { mutate: loginOrRegister } = useAuth({ setUserData, resetForm: reset })
 
   const onSubmit = (data: IAuthForm, type: 'login' | 'register') => {
-    mutate({ data, type })
+    loginOrRegister({ data, type })
   }
 
   const handleLogin = handleSubmit((data) => onSubmit(data, 'login'))
@@ -65,7 +37,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <Card className={cls.cardWrapper}>
+    <Card className={cls.cardWrapper} data-testid={'LoginPage'}>
       <CardTitle className={cls.title}>Create project</CardTitle>
 
       <form>

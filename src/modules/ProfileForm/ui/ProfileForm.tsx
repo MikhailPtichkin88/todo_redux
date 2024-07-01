@@ -61,7 +61,7 @@ export const ProfileForm = () => {
   }, [])
 
   return (
-    <Card className={cls.cardWrapper}>
+    <Card className={cls.cardWrapper} data-testid="ProfilePage">
       <CardHeader>
         <CardTitle>Profile</CardTitle>
       </CardHeader>
