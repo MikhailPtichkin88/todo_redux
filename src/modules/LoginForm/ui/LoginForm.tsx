@@ -43,6 +43,7 @@ export const LoginForm = () => {
       <form>
         <CardContent className={cls.contentWrapper}>
           <LabeledInput
+            data-testid="LoginForm.emailInput"
             label="email"
             id="email"
             placeholder="Enter your email"
@@ -60,6 +61,7 @@ export const LoginForm = () => {
           )}
 
           <LabeledInput
+            data-testid="LoginForm.passwordInput"
             type="password"
             label="password"
             id="password"
@@ -76,10 +78,16 @@ export const LoginForm = () => {
           )}
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button onClick={handleLogin} variant="outline">
+          <Button
+            data-testid="LoginBtn"
+            onClick={handleLogin}
+            variant="outline"
+          >
             Login
           </Button>
-          <Button onClick={handleRegister}>Register</Button>
+          <Button data-testid="RegisterBtn" onClick={handleRegister}>
+            Register
+          </Button>
         </CardFooter>
       </form>
     </Card>

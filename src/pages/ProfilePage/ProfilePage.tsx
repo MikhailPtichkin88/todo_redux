@@ -1,6 +1,10 @@
 import { ProfileForm } from '@/modules/ProfileForm'
 
 const ProfilePage = () => {
-  return <ProfileForm />
+  return (
+    <div data-testid="ProfilePage">
+      <ProfileForm />
+    </div>
+  )
 }
 export default ProfilePage
