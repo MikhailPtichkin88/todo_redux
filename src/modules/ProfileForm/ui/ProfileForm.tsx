@@ -1,27 +1,22 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/ui/Card'
-import cls from './ProfileForm.module.scss'
-import { UserAvatar } from '@/ui/UserAvatar'
 import { useUserStore } from '@/modules/HeaderAppBar'
-import { Button } from '@/ui/Button'
-import { IProfileData, useProfileStore } from '../store/useProfileStore'
-import { useEffect } from 'react'
-import { LabeledInput } from '@/ui/Input'
-import { useForm } from 'react-hook-form'
 import { initialUserData } from '@/shared/const/initialUserData'
-import { useMutation } from '@tanstack/react-query'
-import { profileService } from '../api/profileApi'
-import { toast } from 'sonner'
-import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
-import { useNavigate } from 'react-router-dom'
+import { Button } from '@/ui/Button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/ui/Card'
+import { LabeledInput } from '@/ui/Input'
+import { UserAvatar } from '@/ui/UserAvatar'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { useUpdateProfile } from '../hooks/useUpdateProfile'
+import { IProfileData, useProfileStore } from '../store/useProfileStore'
+import cls from './ProfileForm.module.scss'
 
 export const ProfileForm = () => {
   const { user, setUserData } = useUserStore()
   const {
     profile: { email, username, avatar },
     setProfileData,
+    resetProfileData,
   } = useProfileStore()
-
-  const navigate = useNavigate()
 
   const {
     register,
@@ -30,21 +25,9 @@ export const ProfileForm = () => {
     handleSubmit,
   } = useForm<IProfileData>({ mode: 'onBlur' })
 
-  const { mutate: updateProfile, isPending } = useMutation({
-    mutationKey: ['profile'],
-    mutationFn: (data: IProfileData) => {
-      if (!data?.password) {
-        delete data.password
-      }
-      return profileService.update({ ...data, id: user.id })
-    },
-
-    onSuccess: (data) => {
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data))
-      setUserData(data)
-      toast.success(`Profile successfully updated`)
-      navigate('/')
-    },
+  const { updateProfile, isPending } = useUpdateProfile({
+    userId: user?.id,
+    setUserData,
   })
 
   const onCancel = () => {
@@ -57,7 +40,11 @@ export const ProfileForm = () => {
 
   useEffect(() => {
     setProfileData(user)
-    return () => reset(user)
+
+    return () => {
+      resetProfileData()
+      reset()
+    }
   }, [])
 
   return (

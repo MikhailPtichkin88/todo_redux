@@ -11,6 +11,7 @@ export interface IProfileData {
 export interface IProfileStore {
   profile: IProfileData
   setProfileData: (userData: IProfileData) => void
+  resetProfileData: () => void
 }
 
 export const useProfileStore = create<IProfileStore>((set) => ({
@@ -18,5 +19,8 @@ export const useProfileStore = create<IProfileStore>((set) => ({
 
   setProfileData: (userData: IProfileData) => {
     set(() => ({ profile: userData }))
+  },
+  resetProfileData: () => {
+    set(() => ({ profile: initialUserData }))
   },
 }))

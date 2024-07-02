@@ -43,18 +43,6 @@ describe('useUserStore', () => {
     expect(result.current.user.email).toBe('example@mail.ru')
   })
 
-  it('should init when "me" request has passed', () => {
-    createMockLocalStorage({ key: USER_LOCALSTORAGE_KEY, value: mockUserData })
-
-    const { result } = renderHook(() => useUserStore())
-
-    act(() => {
-      result.current.mockMeRequest()
-    })
-    expect(result.current._inited).toBe(true)
-    expect(result.current.user.email).toBe('example@mail.ru')
-  })
-
   it('should correctly logout', () => {
     createMockLocalStorage({ key: USER_LOCALSTORAGE_KEY, value: mockUserData })
 

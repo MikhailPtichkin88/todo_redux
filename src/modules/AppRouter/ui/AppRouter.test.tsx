@@ -11,19 +11,19 @@ describe('AppRouter', () => {
     localStorage.removeItem(USER_LOCALSTORAGE_KEY)
   })
 
-  test('Страница должна отрендериться', async () => {
+  test('page should render', async () => {
     componentRender(<AppRouter />, { route: AppRoutesPaths.login })
     const page = await screen.findByTestId('LoginPage')
     expect(page).toBeInTheDocument()
   })
 
-  test('Страница не найдена', async () => {
+  test('not found page', async () => {
     componentRender(<AppRouter />, { route: '/skjasjk' })
     const page = await screen.findByTestId('NotFoundPage')
     expect(page).toBeInTheDocument()
   })
 
-  test('Редирект неавторизованного пользователя на страницу авторизации', async () => {
+  test('redirect unauthorized user to login page', async () => {
     componentRender(<AppRouter />, { route: AppRoutesPaths.main })
     let page
     await waitFor(async () => {
@@ -32,7 +32,7 @@ describe('AppRouter', () => {
     expect(page).toBeInTheDocument()
   })
 
-  test('Редирект авторизованного пользователя на главную страницу', async () => {
+  test('redirect authorized user to main page', async () => {
     const { result } = renderHook(() => useUserStore())
     act(() => {
       localStorage.setItem(

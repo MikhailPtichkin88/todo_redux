@@ -16,7 +16,7 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --quiet --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss}\"",
     "precommit": "pretty-quick --staged",
-    "test": "jest"
+    "test:unit": "jest"
   },
   "keywords": [],
   "author": "",
