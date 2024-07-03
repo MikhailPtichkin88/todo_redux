@@ -48,12 +48,10 @@ jobs:
       - name: Build production
         run: npm run build:prod
       - name: Start application
-        run: |
-          npm run start
-          exit
+        timeout-minutes: 0.5
+        run: npm run start
       - name: Start server
-        run: |
-          npm run start:dev:server
-          exit
+        timeout-minutes: 0.5
+        run: npm run start:dev:server
       - name: Run Cypress tests
         run: npx cypress run
