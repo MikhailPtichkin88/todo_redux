@@ -49,11 +49,17 @@ jobs:
         run: npm run build:prod
       - name: Start application
         run: |
-          npm run start:dev
+          npm run start
           while ! nc -z localhost 3002; do
             echo "Waiting for server to start..."
             sleep 1
           done
-
+      - name: Start server
+        run: |
+          npm run start:dev:server
+          while ! nc -z localhost 8002; do
+            echo "Waiting for server to start..."
+            sleep 1
+          done
       - name: Run Cypress tests
         run: npx cypress run
