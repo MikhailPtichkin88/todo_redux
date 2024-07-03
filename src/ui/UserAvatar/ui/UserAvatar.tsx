@@ -18,7 +18,7 @@ export const UserAvatar = ({
     if (avatarLink) {
       setSrc(avatarLink)
     }
-  }, [])
+  }, [avatarLink])
 
   return (
     <img

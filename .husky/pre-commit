@@ -4,6 +4,7 @@
 # Run lint-staged
 npm run build:prod
 npm run test:unit
+npx cypress run
 npm run lint:ts:fix
 npm run lint:scss:fix
 

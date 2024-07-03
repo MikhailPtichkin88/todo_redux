@@ -52,8 +52,3 @@ jobs:
           npm run start:dev &&
           sleep 15 &
           npx cypress run
-      # - name: Start server
-      #   timeout-minutes: 0.5
-      #   run: npm run start:dev:server
-      # - name: Run Cypress tests
-      #   run: npx cypress run

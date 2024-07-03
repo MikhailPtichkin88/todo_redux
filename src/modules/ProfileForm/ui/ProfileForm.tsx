@@ -17,7 +17,6 @@ export const ProfileForm = () => {
     setProfileData,
     resetProfileData,
   } = useProfileStore()
-
   const {
     register,
     formState: { errors },
@@ -140,7 +139,12 @@ export const ProfileForm = () => {
       </CardContent>
 
       <CardFooter className={cls.footer}>
-        <Button disabled={isPending} onClick={onSubmit} variant="outline">
+        <Button
+          data-testid="updateProfileBtn"
+          disabled={isPending}
+          onClick={onSubmit}
+          variant="outline"
+        >
           Save
         </Button>
         <Button onClick={onCancel}>Cancel</Button>
