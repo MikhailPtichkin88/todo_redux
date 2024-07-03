@@ -50,10 +50,10 @@ jobs:
       - name: Start application
         run: |
           npm run start
-          npx wait-on http://localhost:3002
+          npx wait-for-it -t 60 localhost:3002
       - name: Start server
         run: |
           npm run start:dev:server
-          npx wait-on http://localhost:8002
+          npx wait-for-it -t 60 localhost:8002
       - name: Run Cypress tests
         run: npx cypress run
