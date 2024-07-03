@@ -49,11 +49,11 @@ jobs:
         run: npm run build:prod
       - name: Start application
         run: |
-          npx wait-for-it -t 60 localhost:3002
           npm run start
+          done
       - name: Start server
         run: |
-          npx wait-for-it -t 60 localhost:8002
           npm run start:dev:server
+          done
       - name: Run Cypress tests
         run: npx cypress run
