@@ -50,16 +50,11 @@ jobs:
       - name: Start application
         run: |
           npm run start
-          while ! nc -z localhost 3002; do
-            echo "Waiting for server to start..."
-            sleep 1
-          done
+          npx wait-on http://localhost:3002
       - name: Start server
         run: |
           npm run start:dev:server
-          while ! nc -z localhost 8002; do
-            echo "Waiting for server to start..."
-            sleep 1
-          done
+          npx wait-on http://localhost:8002
+      - name: Start server
       - name: Run Cypress tests
         run: npx cypress run
