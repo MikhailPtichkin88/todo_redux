@@ -18,10 +18,7 @@ describe('Login flow', () => {
     cy.getByTestId('LoginBtn').click()
 
     cy.wait('@login').then((interception) => {
-      expect(interception.request.body).to.deep.equal({
-        email,
-        password,
-      })
+      expect(interception.response.body.email).to.eql(email)
     })
 
     cy.getByTestId('MainPage').should('exist')

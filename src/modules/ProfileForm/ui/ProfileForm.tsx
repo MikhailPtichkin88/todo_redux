@@ -58,6 +58,7 @@ export const ProfileForm = () => {
           <div className={cls.contentWrapper}>
             <div className={cls.formBlock}>
               <LabeledInput
+                data-testid="ProfilePage.emailInput"
                 label="email"
                 id="email"
                 placeholder="Enter your email"
@@ -76,6 +77,7 @@ export const ProfileForm = () => {
               )}
 
               <LabeledInput
+                data-testid="ProfilePage.nameInput"
                 label="name"
                 id="username"
                 placeholder="Enter your name"
@@ -93,6 +95,7 @@ export const ProfileForm = () => {
               )}
 
               <LabeledInput
+                data-testid="ProfilePage.avatarInput"
                 label="avatar link"
                 id="avatar"
                 placeholder="Paste your avatar link"
@@ -111,6 +114,7 @@ export const ProfileForm = () => {
               )}
 
               <LabeledInput
+                data-testid="ProfilePage.passwordInput"
                 type="password"
                 label="password"
                 id="password"

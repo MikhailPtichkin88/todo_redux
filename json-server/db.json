@@ -8,6 +8,13 @@
       "avatar": "https://logowik.com/content/uploads/images/homer-simpson4924.jpg"
     },
     {
+      "email": "test_profile@mail.ru",
+      "password": "123456",
+      "id": "2",
+      "username": "Alex",
+      "avatar": "https://logowik.com/content/uploads/images/homer-simpson4924.jpg"
+    },
+    {
       "email": "user1@mail.ru",
       "password": "123456",
       "id": "x4hvShz",

@@ -21,6 +21,11 @@ export const login = (email = 'user1@mail.ru', password = '123456') => {
   })
 }
 
+export const logout = () => {
+  window.localStorage.removeItem(USER_LOCALSTORAGE_KEY)
+  cy.visit('/login')
+}
+
 export const getByTestId = (testId: string) => {
   return cy.get(selectByTestId(testId))
 }
@@ -29,6 +34,7 @@ declare global {
   namespace Cypress {
     interface Chainable {
       login(email?: string, password?: string): Chainable<IUserData>
+      logout(): Chainable<void>
       enterAuthData(email?: string, password?: string): Chainable<IUserData>
       getByTestId(testId: string): Chainable<JQuery<HTMLElement>>
     }
