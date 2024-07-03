@@ -50,10 +50,10 @@ jobs:
       - name: Start application
         run: |
           npm run start
-          done
+          exit
       - name: Start server
         run: |
           npm run start:dev:server
-          done
+          exit
       - name: Run Cypress tests
         run: npx cypress run
