@@ -50,6 +50,10 @@ jobs:
       - name: Start application
         run: |
           npm run start:dev
-          npx wait-on http://localhost:3002
+          while ! nc -z localhost 3002; do
+            echo "Waiting for server to start..."
+            sleep 1
+          done
+
       - name: Run Cypress tests
         run: npx cypress run
