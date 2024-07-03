@@ -49,9 +49,13 @@ jobs:
         run: npm run build:prod
       - name: Start application
         timeout-minutes: 0.5
-        run: npm run start
-      - name: Start server
-        timeout-minutes: 0.5
-        run: npm run start:dev:server
-      - name: Run Cypress tests
-        run: npx cypress run
+        run: |
+          npm run start:dev &&
+          sleep 5 &
+          curl http://localhost:8002 -I &&
+          npx cypress run &&
+      # - name: Start server
+      #   timeout-minutes: 0.5
+      #   run: npm run start:dev:server
+      # - name: Run Cypress tests
+      #   run: npx cypress run
