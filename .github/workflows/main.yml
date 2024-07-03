@@ -55,6 +55,5 @@ jobs:
         run: |
           npm run start:dev:server
           npx wait-on http://localhost:8002
-      - name: Start server
       - name: Run Cypress tests
         run: npx cypress run
