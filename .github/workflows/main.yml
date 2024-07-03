@@ -48,6 +48,8 @@ jobs:
       - name: Build production
         run: npm run build:prod
       - name: Start application
-        run: npm run start:dev
+        run: |
+          npm run start:dev
+          npx wait-on http://localhost:3002
       - name: Run Cypress tests
         run: npx cypress run
