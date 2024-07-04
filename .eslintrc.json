@@ -7,7 +7,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -18,13 +19,17 @@
   "rules": {
     "react/jsx-filename-extension": [
       2,
-      { "extensions": [".js", ".jsx", ".tsx"] }
+      {
+        "extensions": [".js", ".jsx", ".tsx"]
+      }
     ],
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
-      { "argsIgnorePattern": "^_" }
+      {
+        "argsIgnorePattern": "^_"
+      }
     ],
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",

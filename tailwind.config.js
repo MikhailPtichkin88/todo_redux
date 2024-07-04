@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line no-undef
 module.exports = {
   darkMode: ['class'],
-  content: ['./src/**/*.{ts,tsx,html,js}'],
+  content: ['./src/stories/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     container: {
       center: true,
