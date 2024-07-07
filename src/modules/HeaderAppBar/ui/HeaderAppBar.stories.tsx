@@ -1,11 +1,11 @@
-import { StoryFn } from '@storybook/react'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { HeaderAppBar } from './HeaderAppBar'
 import { BrowserRouter } from 'react-router-dom'
 import { useUserStore } from '../store/useUserStore'
 import { useEffect } from 'react'
 
-export default {
-  title: 'Components/HeaderAppBar',
+const meta: Meta<typeof HeaderAppBar> = {
+  title: 'modules/HeaderAppBar',
   component: HeaderAppBar,
   decorators: [
     (Story: StoryFn) => (
@@ -15,19 +15,34 @@ export default {
     ),
   ],
 }
+export default meta
 
-const Template = () => {
-  const { setUserData } = useUserStore()
+type Story = StoryObj<typeof HeaderAppBar>
+
+const Template = ({ isAuthed }: { isAuthed?: boolean }) => {
+  const { setUserData, logout } = useUserStore()
+
   useEffect(() => {
-    setUserData({
-      id: '999',
-      username: 'mockUser',
-      email: 'mockUser@example.com',
-      avatar:
-        'https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg',
-    })
-  }, [])
+    if (isAuthed) {
+      setUserData({
+        id: '999',
+        username: 'mockUser',
+        email: 'mockUser@example.com',
+        avatar:
+          'https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg',
+      })
+    } else {
+      logout()
+    }
+  }, [isAuthed])
+
   return <HeaderAppBar />
 }
 
-export const Default = Template.bind({})
+export const Authorized: Story = {
+  render: () => <Template isAuthed={true} />,
+}
+
+export const Unauthorized: Story = {
+  render: () => <Template />,
+}
