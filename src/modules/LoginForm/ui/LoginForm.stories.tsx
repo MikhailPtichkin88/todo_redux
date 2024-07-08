@@ -28,6 +28,14 @@ const meta: Meta<typeof LoginForm> = {
           data: 'success',
         },
       },
+      {
+        url: 'http://localhost:8002/user',
+        method: 'POST',
+        status: 200,
+        response: {
+          data: 'success',
+        },
+      },
     ],
   },
 }

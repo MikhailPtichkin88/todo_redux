@@ -2,6 +2,7 @@ import { StoryFn } from '@storybook/react'
 import { ProfileAvatar } from './ProfileAvatar'
 import { BrowserRouter } from 'react-router-dom'
 import { Meta, StoryObj } from '@storybook/react'
+import { HTMLProps } from 'react'
 
 const meta: Meta<typeof ProfileAvatar> = {
   title: 'components/ProfileAvatar',
@@ -18,23 +19,34 @@ export default meta
 
 type Story = StoryObj<typeof ProfileAvatar>
 
-const Template = ({ inited }: { inited: boolean }) => {
+interface IProps extends HTMLProps<HTMLImageElement> {
+  wrapperClassName?: string
+  avatarLink: string
+  inited: boolean
+}
+
+const Template = (args: IProps) => {
   return (
     <div className="p30">
-      <ProfileAvatar
-        avatarLink={
-          'https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg'
-        }
-        inited={inited}
-      />
+      <ProfileAvatar {...args} />
     </div>
   )
 }
 
 export const Authorized: Story = {
-  render: () => <Template inited={true} />,
+  render: (args) => <Template {...args} />,
+}
+Authorized.args = {
+  inited: true,
+  avatarLink:
+    'https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg',
+  width: '80px',
+  height: 80,
 }
 
 export const Unauthorized: Story = {
-  render: () => <Template inited={false} />,
+  render: (args) => <Template {...args} />,
+}
+Unauthorized.args = {
+  inited: false,
 }

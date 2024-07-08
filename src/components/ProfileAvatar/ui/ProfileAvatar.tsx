@@ -13,6 +13,7 @@ export const ProfileAvatar = ({
   avatarLink,
   wrapperClassName,
   className = '',
+  ...args
 }: IProfileAvatarProps) => {
   if (!inited) {
     return <UserAvatar avatarLink={undefined} className={className} />
@@ -24,7 +25,7 @@ export const ProfileAvatar = ({
       className={wrapperClassName}
       data-testid="ProfileAvatar"
     >
-      <UserAvatar avatarLink={avatarLink} className={className} />
+      <UserAvatar avatarLink={avatarLink} className={className} {...args} />
     </NavLink>
   )
 }
