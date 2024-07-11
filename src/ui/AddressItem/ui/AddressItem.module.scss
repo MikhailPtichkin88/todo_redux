@@ -1,0 +1,35 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.title {
+  flex-grow: 3;
+  position: relative;
+  word-break: break-all;
+  white-space: pre-wrap;
+  max-height: 70px;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 20px;
+    color: lightgrey;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    left: -10px;
+  }
+
+  &::after {
+    right: -10px;
+  }
+}

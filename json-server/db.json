@@ -21,5 +21,22 @@
       "username": "",
       "avatar": "https://preview.redd.it/do-you-like-berserk-but-hate-other-anime-manga-v0-nrmdrm83vdob1.jpg?width=1080&crop=smart&auto=webp&s=8835d50664920c070a517934c8a6addf6cc1e763"
     }
+  ],
+  "address_list": [
+    {
+      "coordinates": ["37.729853", "55.798465"],
+      "address": "Большая Черкизовская улица, Москва, Россия",
+      "id": "1"
+    },
+    {
+      "address": "река Власов, Сизинский сельсовет, Шушенский район, Красноярский край, Россия",
+      "coordinates": [91.663786, 52.466388],
+      "id": "tiaBTTV"
+    },
+    {
+      "address": "остров Власов, Нахвальский сельсовет, Сухобузимский район, Красноярский край, Россия",
+      "coordinates": [93.482569, 56.80892],
+      "id": "31Jkm3W"
+    }
   ]
 }

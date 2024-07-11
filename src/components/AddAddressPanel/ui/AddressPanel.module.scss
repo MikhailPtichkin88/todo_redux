@@ -1,0 +1,20 @@
+.addressDropdown {
+  overflow: auto;
+
+  button {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
