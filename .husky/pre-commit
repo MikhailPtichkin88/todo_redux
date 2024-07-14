@@ -4,7 +4,27 @@
 # Run lint-staged
 npm run build:prod
 npm run test:unit
+npm run start:dev &
+
+sleep 10
+
 npx cypress run
+
+# Close the running apps on ports 3002 and 8002
+APP1_PID=$(lsof -t -i:3002)
+APP2_PID=$(lsof -t -i:8002)
+
+# Kill the first app if it is running
+if [ -n "$APP1_PID" ]; then
+  kill -9 $APP1_PID
+fi
+
+# Kill the second app if it is running
+if [ -n "$APP2_PID" ]; then
+  kill -9 $APP2_PID
+fi
+
+
 npm run lint:ts:fix
 npm run lint:scss:fix
 

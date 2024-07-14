@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
 const fs = require('fs')
 const jsonServer = require('json-server')
 const path = require('path')
@@ -41,7 +43,30 @@ server.post('/login', (req, res) => {
   }
 })
 
-// проверяем, авторизован ли пользователь
+server.post('/update-address-list', (req, res) => {
+  try {
+    const { newAddressList } = req.body
+
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8')
+    )
+
+    db.address_list = newAddressList
+
+    fs.writeFileSync(
+      path.resolve(__dirname, 'db.json'),
+      JSON.stringify(db, null, 2)
+    )
+
+    // Перезагружаем данные в роутере jsonServer
+    router.db.setState(db)
+
+    return res.json({ message: 'Address list updated successfully' })
+  } catch (e) {
+    return res.status(500).json({ message: e.message })
+  }
+})
+
 server.use((req, res, next) => {
   if (req.url === '/user' && req.method === 'POST') {
     return next()

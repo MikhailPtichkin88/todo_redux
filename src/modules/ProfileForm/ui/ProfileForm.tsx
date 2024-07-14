@@ -39,7 +39,11 @@ export const ProfileForm = () => {
 
   useEffect(() => {
     setProfileData(user)
-
+    reset({
+      email: user?.email,
+      username: user?.username,
+      avatar: user?.avatar,
+    })
     return () => {
       resetProfileData()
       reset()
