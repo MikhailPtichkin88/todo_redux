@@ -24,6 +24,9 @@ const config: Config = {
   clearMocks: true,
   testEnvironment: 'jsdom',
   coveragePathIgnorePatterns: ['/node_modules/'],
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
   modulePaths: ['./src/'],
   testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
   // An array of directory names to be searched recursively up from the requiring module's location
