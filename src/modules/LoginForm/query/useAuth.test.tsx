@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-global.TextEncoder = require('util').TextEncoder
-global.TextDecoder = require('util').TextDecoder
-
 import { IUserData } from '@/modules/HeaderAppBar'
 import nock from 'nock'
 import { act, renderHook, waitFor } from '@testing-library/react'

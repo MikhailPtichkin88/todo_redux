@@ -4,7 +4,7 @@ import { useAddNewAddress } from './useAddNewAddress'
 import nock from 'nock'
 import { TestProvider } from '@/shared/tests/componentRender'
 
-import { useGetAddressList } from '@/modules/MapAddressList/query/useGetAddressList'
+import { useGetAddressList } from '@/modules/MapAddressList'
 
 const newAddress = {
   address: 'Большая Черкизовская улица',

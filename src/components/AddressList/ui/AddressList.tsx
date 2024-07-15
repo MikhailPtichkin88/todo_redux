@@ -15,11 +15,13 @@ interface IProps {
   addressList: IAddressItem[]
   setAddressList: (items: IAddressItem[]) => void
   isFetching?: boolean
+  className?: string
 }
 
 export const AddressList = ({
   addressList,
   isFetching = false,
+  className = '',
   setAddressList,
 }: IProps) => {
   const { deleteAddress, isPending: isDeleting } = useDeleteAddress()
@@ -46,7 +48,7 @@ export const AddressList = ({
       <Droppable droppableId="list">
         {(provided) => (
           <div
-            className={cls.wrapper}
+            className={cls.wrapper + ` ${className}`}
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
