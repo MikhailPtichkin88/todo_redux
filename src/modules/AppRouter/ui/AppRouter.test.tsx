@@ -47,9 +47,12 @@ describe('AppRouter', () => {
     })
 
     let page
-    await waitFor(async () => {
-      page = await screen.findByTestId('MainPage')
-    })
-    expect(page).toBeInTheDocument()
+    await waitFor(
+      async () => {
+        page = await screen.findByTestId('MainPage')
+        expect(page).toBeInTheDocument()
+      },
+      { timeout: 4000 }
+    )
   })
 })

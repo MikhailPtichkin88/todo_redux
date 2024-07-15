@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
-import { addressListApi } from '../api/addressListApi'
+import { addressListApi } from '../api/api'
 
 export const useDeleteAddress = () => {
   const queryClient = useQueryClient()

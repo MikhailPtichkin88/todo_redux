@@ -7,6 +7,10 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .formBlock {
@@ -14,11 +18,20 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .avatarBlock {
   width: 30%;
   align-self: center;
+
+  @media (max-width: 768px) {
+    width: 220px;
+    align-self: self-start;
+  }
 }
 
 .error {

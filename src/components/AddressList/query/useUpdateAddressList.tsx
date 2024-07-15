@@ -1,14 +1,15 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
-import { addressListApi } from '../api/addressListApi'
-import { IAddressItem } from '../types/types'
-import { useAddressMenu } from '../store/useAddressMenu'
+import { addressListApi } from '../api/api'
+import { IAddressItem } from '@/modules/MapAddressList'
 
-export const useUpdateAddressList = () => {
+export const useUpdateAddressList = ({
+  setAddressList,
+}: {
+  setAddressList: (items: IAddressItem[]) => void
+}) => {
   const queryClient = useQueryClient()
-
-  const { setAddressList } = useAddressMenu()
 
   const { mutate: updateList, isPending } = useMutation({
     mutationKey: ['updateAddressList'],

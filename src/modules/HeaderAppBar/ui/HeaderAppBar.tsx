@@ -23,7 +23,7 @@ export const HeaderAppBar = () => {
                 src={`${typeof logoIcon === 'function' ? '' : logoIcon}`}
                 alt="logo internet icon"
               />
-              <span className="font-medium text-[20px]">Logo</span>
+              <span className="font-medium text-[20px]">Maps</span>
             </div>
           </NavLink>
 

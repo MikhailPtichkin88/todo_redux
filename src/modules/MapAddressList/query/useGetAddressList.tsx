@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { toast } from 'sonner'
-import { addressListApi } from '../api/addressListApi'
-import { useAddressMenu } from '../store/useAddressMenu'
+import { addressListApi } from '../api/api'
+import { useAddressList } from '../store/useAddressList'
 
 export const useGetAddressList = () => {
-  const { addressList, setAddressList } = useAddressMenu()
+  const { addressList, setAddressList } = useAddressList()
   const { isFetching } = useQuery({
     queryKey: ['addressList'],
     queryFn: async () => {
@@ -18,5 +18,5 @@ export const useGetAddressList = () => {
       }
     },
   })
-  return { addressList, isFetching }
+  return { addressList, setAddressList, isFetching }
 }

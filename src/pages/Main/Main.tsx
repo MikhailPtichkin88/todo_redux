@@ -1,15 +1,12 @@
 import { AddAddressPanel } from '@/components/AddAddressPanel/ui/AddAddressPanel'
-import { AddressList } from '@/components/AddressList'
-import { Map } from '@/components/Map'
+
+import { MapAddressList } from '@/modules/MapAddressList/ui/MapAddressList'
 const Main = () => {
   return (
-    <div data-testid="MainPage">
-      <AddAddressPanel />
-      <div className="p-[20px]" />
-      <AddressList />
-      <div className="p-[20px]" />
+    <div data-testid="MainPage" className="flex flex-col gap-[20px] mb-[20px]">
+      <MapAddressList />
 
-      <Map points={[]} />
+      <AddAddressPanel />
     </div>
   )
 }

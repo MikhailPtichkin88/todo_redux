@@ -1,16 +1,14 @@
-import { useAddressStore } from '../store/useAddressStore'
-import { useGetAddress } from '../query/useGetAddress'
 import { useDebounce } from '@/shared/hooks/useDebounce'
 import { SearchMenu } from '@/ui/SearchMenu'
-import cls from './AddressPanel.module.scss'
+import { useGetAddress } from '../query/useGetAddress'
 import { IAddressOption } from '../types/types'
+import cls from './AddressPanel.module.scss'
 
-import { useAddNewAddress } from '../query/useAddNewAddress'
 import { Loader } from '@/ui/PageLoader'
+import { useAddNewAddress } from '../query/useAddNewAddress'
 
 export const AddAddressPanel = () => {
-  const { setAddress, addressOptions } = useAddressStore()
-  const { isLoading } = useGetAddress()
+  const { setAddress, addressOptions, isLoading } = useGetAddress()
 
   const { addNewAddress, isPending } = useAddNewAddress()
 
@@ -23,7 +21,7 @@ export const AddAddressPanel = () => {
     const item: IAddressOption = addressOptions.find((el) => el.value === value)
     addNewAddress({
       address: item.label,
-      coordinates: item.value.split(' ').map((el) => Number(el)) as [
+      coordinates: item.value.split(' ').reverse().map(Number) as [
         number,
         number
       ],
@@ -34,8 +32,8 @@ export const AddAddressPanel = () => {
     <div className={cls.wrapper}>
       <SearchMenu
         loading={isLoading}
+        className={cls.menuBtn}
         dropdownClassName={cls.addressDropdown}
-        width={600}
         onSelect={onSelect}
         onChangeInput={debouncedSearch}
         options={addressOptions}

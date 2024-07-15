@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Navigate } from 'react-router-dom'
 import { IAuthForm } from '../api/api'
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../query/useAuth'
 
 export const LoginForm = () => {
   const { _inited, setUserData } = useUserStore()

@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { ChevronsUpDown, Search } from 'lucide-react'
+import { ChevronsUpDown, MapPin, Search } from 'lucide-react'
 
 import { Button } from '@/ui/Button'
 import { Command, CommandEmpty, CommandGroup } from './Command'
 import { Popover, PopoverContent, PopoverTrigger } from './Popover'
 
-import { useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Input } from '../Input'
 
 interface IProps {
@@ -16,7 +16,7 @@ interface IProps {
   value?: string
   onSelect?: (value: string) => void
   onChangeInput?: (value: string) => void
-  width?: number | string
+
   loading?: boolean
 }
 
@@ -28,9 +28,9 @@ export function Combobox({
   placeholder,
   className = '',
   dropdownClassName,
-  width = 200,
 }: IProps) {
   const [open, setOpen] = useState(false)
+  const [currentBtnWidth, setCurrentBtnWidth] = useState(0)
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -41,21 +41,28 @@ export function Combobox({
     }
   }
 
+  const buttonRef = useRef(null)
+
+  useEffect(() => {
+    if (buttonRef.current && open) {
+      setCurrentBtnWidth(buttonRef.current.offsetWidth)
+    }
+  }, [open])
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          ref={buttonRef}
           role="combobox"
           aria-expanded={open}
-          style={{ width }}
           className={`justify-between ${className}`}
         >
           {placeholder || 'Выберите вариант'}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <MapPin className="ml-2 h-4 w-4 shrink-0 " />
         </Button>
       </PopoverTrigger>
-      <PopoverContent style={{ width }} className={`p-0`}>
+      <PopoverContent style={{ width: currentBtnWidth }} className={`p-0`}>
         <Command>
           <div className="flex items-center border-b px-3">
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />

@@ -10,7 +10,11 @@
 
 .loader {
   position: absolute;
-  bottom: -80px;
-  right: 0;
+  bottom: 60px;
+  right: 80px;
   z-index: 0;
+
+  @media (max-width: 1200px) {
+    bottom: 20px;
+  }
 }

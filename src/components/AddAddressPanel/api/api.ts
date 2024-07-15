@@ -10,6 +10,7 @@ export const addressApi = {
       geocode: address,
       lang: 'ru_RU',
       format: 'json',
+      results: 5,
     }
     return axios.get<{ response: GeoObjectCollection }>(
       'https://geocode-maps.yandex.ru/1.x/',
