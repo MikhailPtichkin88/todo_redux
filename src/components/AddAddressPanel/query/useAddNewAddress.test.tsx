@@ -5,9 +5,6 @@ import nock from 'nock'
 import { TestProvider } from '@/shared/tests/componentRender'
 
 import { useGetAddressList } from '@/modules/MapAddressList/query/useGetAddressList'
-import { TextEncoder, TextDecoder } from 'util'
-
-Object.assign(global, { TextDecoder, TextEncoder })
 
 const newAddress = {
   address: 'Большая Черкизовская улица',
