@@ -4,6 +4,9 @@ import { act, renderHook, waitFor } from '@testing-library/react'
 import { useAuth } from './useAuth'
 import { TestProvider } from '@/shared/tests/componentRender'
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
+import { TextEncoder, TextDecoder } from 'util'
+
+Object.assign(global, { TextDecoder, TextEncoder })
 
 const mockUserData: IUserData = {
   id: '1',

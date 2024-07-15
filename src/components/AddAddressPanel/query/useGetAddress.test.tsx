@@ -3,6 +3,9 @@ import { TestProvider } from '@/shared/tests/componentRender'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import nock from 'nock'
 import { useGetAddress } from './useGetAddress'
+import { TextEncoder, TextDecoder } from 'util'
+
+Object.assign(global, { TextDecoder, TextEncoder })
 
 const mockData = {
   response: {
