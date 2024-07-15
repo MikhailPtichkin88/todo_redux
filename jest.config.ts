@@ -16,13 +16,14 @@ const config: Config = {
   // cacheDirectory: "/private/var/folders/zv/dv7rtsk96d1900tfx0zfw4j00000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  preset: 'ts-jest',
+  // preset: 'ts-jest',
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
   clearMocks: true,
   testEnvironment: 'jsdom',
+  setupFiles: ['<rootDir>/setup.jest.ts'],
   coveragePathIgnorePatterns: ['/node_modules/'],
   modulePaths: ['./src/'],
   testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
