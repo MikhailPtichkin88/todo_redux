@@ -15,7 +15,7 @@ export const AddAddressPanel = () => {
   const onInputChange = (value: string) => {
     setAddress(value)
   }
-  const debouncedSearch = useDebounce(onInputChange, 2000)
+  const debouncedSearch = useDebounce(onInputChange, 1000)
 
   const onSelect = (value: string) => {
     const item: IAddressOption = addressOptions.find((el) => el.value === value)

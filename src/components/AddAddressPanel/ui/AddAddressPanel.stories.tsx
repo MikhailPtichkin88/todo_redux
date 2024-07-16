@@ -23,6 +23,16 @@ const meta: Meta<typeof AddAddressPanel> = {
     loading: { control: 'boolean' },
     className: { control: 'text' },
   },
+  parameters: {
+    mockData: [
+      {
+        url: 'http://localhost:8002/address_list',
+        method: 'POST',
+        status: 200,
+        response: [],
+      },
+    ],
+  },
 }
 
 export default meta

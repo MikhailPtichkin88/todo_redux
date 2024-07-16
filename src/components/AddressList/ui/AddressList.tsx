@@ -48,12 +48,16 @@ export const AddressList = ({
       <Droppable droppableId="list">
         {(provided) => (
           <div
+            data-testid="MainPage.AddressList"
             className={cls.wrapper + ` ${className}`}
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
             {isLoading && (
-              <div className={cls.loader}>
+              <div
+                data-testid="MainPage.AddressList.Loader"
+                className={cls.loader}
+              >
                 <Loader />
               </div>
             )}
@@ -71,6 +75,13 @@ export const AddressList = ({
                     onDelete={deleteAddress}
                     title={address}
                     disabled={isFetching}
+                    data-testid={`${
+                      index === 0
+                        ? 'MainPage.AddressList.FirstAddress'
+                        : index === 1
+                        ? 'MainPage.AddressList.SecondAddress'
+                        : ''
+                    }`}
                   />
                 )}
               </Draggable>
