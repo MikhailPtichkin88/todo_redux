@@ -21,10 +21,10 @@
 
 ### Дополнительный функционал
 
-- \*Реализованы процессы авторизации и регистрации пользователей.
-- \*Кастомная.
+- *Авторизация:*Реализованы процессы авторизации и регистрации пользователей.
+- *Сборщик:*Кастомная настройка Webpack, Babel loader.
 - _Страница профиля:_ Возможность редактирования email, username, avatar на странице профиля.
-- _Линтинг и форматинг:_ Настроен линтинг и форматинг кода.
+- _Линтинг и форматинг:_ Настроен eslint, prettier, husky (pre-commit).
 - _CI/CD:_ Реализован процесс CI/CD с помощью Github Actions.
 - _Тестирование:_ Используются Jest, React Testing Library, Storybook и Cypress для тестирования приложения.
 - _Мок бэкенд:_ Мок бэкенд реализован с помощью json-server.
@@ -34,7 +34,7 @@
 1. Клонируйте репозиторий:
 
    git clone https://github.com/MikhailPtichkin88/test_app.git
-   cd routes_editor
+   cd route_editor
 
 2. Установите зависимости:
 
@@ -76,6 +76,8 @@
 Dev зависимости:
 
 - webpack: ~5.88.2
+- zustand: ^4.5.2
+- tanstack/react-query: ^5.48.0
 - babel-loader: ^9.1.3
 - eslint: ^8.55.0
 - jest: ^29.7.0
@@ -86,6 +88,9 @@ Dev зависимости:
 ## Стек технологий
 
 - Frontend: React, Redux, React Router, TailwindCSS
+- Стейт: zustand, tanstack/react-query
+- Роутинг: React-router-dom v6
+- Формы: React-hook-form
 - Сборщик: Webpack 5
 - Backend: json-server
 - CI/CD: Github Actions
