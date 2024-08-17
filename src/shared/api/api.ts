@@ -12,3 +12,9 @@ $api.interceptors.request.use((config) => {
   }
   return config
 })
+$api.interceptors.response.use((config) => {
+  if (config?.data?.password) {
+    delete config.data.password
+  }
+  return config
+})

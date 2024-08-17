@@ -1,16 +1,24 @@
 import { Button } from '@/ui/Button'
 import cls from './HeaderAppBar.module.scss'
 import logoIcon from '@/assets/images/internet.png'
-import { useUserStore } from '../store/useUserStore'
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { ProfileAvatar } from '@/components/ProfileAvatar/ui/ProfileAvatar'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getIsInited } from '../model/selectors/getIsInited'
+import { useAppDispatch } from '@/providers/StoreProvider'
+import { authSliceActions } from '../model/slice/authSlice'
+import { getUserData } from '../model/selectors/getUserData'
 
 export const HeaderAppBar = () => {
-  const { _inited, user, logout } = useUserStore()
+  const isInited = useSelector(getIsInited)
+  const user = useSelector(getUserData)
+
+  const dispatch = useAppDispatch()
+
   const onLogout = () => {
     localStorage.removeItem(USER_LOCALSTORAGE_KEY)
-    logout()
+    dispatch(authSliceActions.logout())
   }
 
   return (
@@ -28,13 +36,13 @@ export const HeaderAppBar = () => {
           </NavLink>
 
           <div className="self-center flex items-center gap-[10px]">
-            {_inited && (
+            {isInited && (
               <p data-testid="UserName">{user?.username || user?.email}</p>
             )}
 
-            <ProfileAvatar inited={_inited} avatarLink={user?.avatar ?? ''} />
+            <ProfileAvatar inited={isInited} avatarLink={user?.avatar ?? ''} />
 
-            {_inited && (
+            {isInited && (
               <Button
                 data-testid="LogoutBtn"
                 onClick={onLogout}

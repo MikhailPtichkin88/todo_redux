@@ -1,4 +1,4 @@
 
 npm run build
-rm -rf ~/../var/www/route_app/html
-cp -r ~/route_app/build ~/../var/www/route_app/html
+rm -rf ~/../var/www/todo_redux/html
+cp -r ~/todo_redux/build ~/../var/www/todo_redux/html

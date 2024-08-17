@@ -1,28 +1,48 @@
 import { Card, CardContent, CardFooter, CardTitle } from '@/ui/Card'
 import cls from './LoginForm.module.scss'
-
-import { useUserStore } from '@/modules/HeaderAppBar'
 import { Button } from '@/ui/Button'
 import { LabeledInput } from '@/ui/Input'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Navigate } from 'react-router-dom'
-import { IAuthForm } from '../api/api'
-import { useAuth } from '../query/useAuth'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { ILoginData, useLoginMutation, useRegisterMutation } from '../api/api'
+import { useSelector } from 'react-redux'
+import { authSliceActions, getIsInited } from '@/modules/HeaderAppBar'
+import { toast } from 'sonner'
+import { useAppDispatch } from '@/providers/StoreProvider'
 
 export const LoginForm = () => {
-  const { _inited, setUserData } = useUserStore()
+  const isInited = useSelector(getIsInited)
+  const dispatch = useAppDispatch()
+  const [login] = useLoginMutation()
+  const [registerUser] = useRegisterMutation()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IAuthForm>({ mode: 'onBlur' })
+  } = useForm<ILoginData>({ mode: 'onBlur' })
 
-  const { mutate: loginOrRegister } = useAuth({ setUserData, resetForm: reset })
-
-  const onSubmit = (data: IAuthForm, type: 'login' | 'register') => {
-    loginOrRegister({ data, type })
+  const onSubmit = async (data: ILoginData, type: 'login' | 'register') => {
+    try {
+      let userData
+      if (type === 'login') {
+        userData = await login(data).unwrap()
+      } else {
+        userData = await registerUser(data).unwrap()
+      }
+      if (!userData) {
+        return toast.error(`error`)
+      }
+      dispatch(authSliceActions.updateUserDate(userData))
+      toast.success(`You have successfully ${type}`)
+      reset()
+      navigate('/')
+    } catch (error) {
+      toast.error(`${type} error`)
+    }
   }
 
   const handleLogin = handleSubmit((data) => onSubmit(data, 'login'))
@@ -32,7 +52,7 @@ export const LoginForm = () => {
     reset({ email: '', password: '' })
   }, [])
 
-  if (_inited) {
+  if (isInited) {
     return <Navigate to={`/`} />
   }
 

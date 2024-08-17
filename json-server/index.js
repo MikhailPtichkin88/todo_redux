@@ -79,7 +79,7 @@ server.use((req, res, next) => {
 
 server.use(router)
 
-const HTTP_PORT = 8002
+const HTTP_PORT = 8003
 
 const httpServer = http.createServer(server)
 // запуск сервера

@@ -1,22 +1,26 @@
-import { useUserStore } from '@/modules/HeaderAppBar'
-import { initialUserData } from '@/shared/const/initialUserData'
+import { getUserData } from '@/modules/HeaderAppBar'
+import { useAppDispatch } from '@/providers/StoreProvider'
 import { Button } from '@/ui/Button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/ui/Card'
 import { LabeledInput } from '@/ui/Input'
 import { UserAvatar } from '@/ui/UserAvatar'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useUpdateProfile } from '../hooks/useUpdateProfile'
-import { IProfileData, useProfileStore } from '../store/useProfileStore'
+import { useSelector } from 'react-redux'
+import { getProfileIsLoading } from '../model/selectors/getProfileIsLoading'
+import { fetchProfileTh } from '../model/services/fetchProfileTh'
+import { updateProfileTh } from '../model/services/updateProfileTh'
+import { IProfileData } from '../model/types/types'
 import cls from './ProfileForm.module.scss'
+import { Loader } from '@/ui/PageLoader'
+import { getProfileData } from '../model/selectors/getProfileData'
 
 export const ProfileForm = () => {
-  const { user, setUserData } = useUserStore()
-  const {
-    profile: { email, username, avatar },
-    setProfileData,
-    resetProfileData,
-  } = useProfileStore()
+  const initialUserData = useSelector(getUserData)
+  const profileData = useSelector(getProfileData)
+  const loading = useSelector(getProfileIsLoading)
+  const dispatch = useAppDispatch()
+
   const {
     register,
     formState: { errors },
@@ -24,31 +28,26 @@ export const ProfileForm = () => {
     handleSubmit,
   } = useForm<IProfileData>({ mode: 'onBlur' })
 
-  const { updateProfile, isPending } = useUpdateProfile({
-    userId: user?.id,
-    setUserData,
-  })
-
   const onCancel = () => {
-    reset({ ...initialUserData, ...user })
+    reset({ ...initialUserData })
   }
 
   const onSubmit = handleSubmit((data: IProfileData) => {
-    updateProfile(data)
+    dispatch(updateProfileTh({ userId: initialUserData.id, data }))
   })
 
   useEffect(() => {
-    setProfileData(user)
-    reset({
-      email: user?.email,
-      username: user?.username,
-      avatar: user?.avatar,
-    })
+    dispatch(
+      fetchProfileTh({ userId: initialUserData.id, resetFormData: reset })
+    )
     return () => {
-      resetProfileData()
       reset()
     }
   }, [])
+
+  if (loading) {
+    return <Loader />
+  }
 
   return (
     <Card className={cls.cardWrapper}>
@@ -65,7 +64,7 @@ export const ProfileForm = () => {
                 label="email"
                 id="email"
                 placeholder="Enter your email"
-                defaultValue={email}
+                defaultValue={initialUserData?.email}
                 {...register('email', {
                   required: true,
                   pattern: {
@@ -84,7 +83,7 @@ export const ProfileForm = () => {
                 label="name"
                 id="username"
                 placeholder="Enter your name"
-                defaultValue={username}
+                defaultValue={initialUserData?.username}
                 {...register('username', {
                   minLength: {
                     value: 2,
@@ -102,7 +101,7 @@ export const ProfileForm = () => {
                 label="avatar link"
                 id="avatar"
                 placeholder="Paste your avatar link"
-                defaultValue={avatar}
+                defaultValue={initialUserData?.avatar}
                 {...register('avatar', {
                   pattern: {
                     value:
@@ -136,7 +135,11 @@ export const ProfileForm = () => {
             </div>
 
             <div className={cls.avatarBlock}>
-              <UserAvatar width={200} height={200} avatarLink={user?.avatar} />
+              <UserAvatar
+                width={200}
+                height={200}
+                avatarLink={profileData?.avatar}
+              />
             </div>
           </div>
         </form>
@@ -145,7 +148,7 @@ export const ProfileForm = () => {
       <CardFooter className={cls.footer}>
         <Button
           data-testid="updateProfileBtn"
-          disabled={isPending}
+          disabled={loading}
           onClick={onSubmit}
           variant="outline"
         >

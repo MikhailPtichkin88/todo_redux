@@ -1,6 +1,6 @@
-import { IUserData } from '@/modules/HeaderAppBar'
+import { IUser } from '@/modules/HeaderAppBar'
 
-export const initialUserData: Omit<IUserData, 'id'> = {
+export const initialUserData: Omit<IUser, 'id'> = {
   email: '',
   password: '',
   username: '',

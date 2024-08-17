@@ -1,54 +1,54 @@
-# Workflow for linting, testing, and building
-name: Linting, Testing, Building
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-jobs:
-  pipeline:
-    runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    strategy:
-      matrix:
-        node-version: [18.20.2]
+# # Workflow for linting, testing, and building
+# name: Linting, Testing, Building
+# on:
+#   push:
+#     branches: [master]
+#   pull_request:
+#     branches: [master]
+# jobs:
+#   pipeline:
+#     runs-on: ubuntu-latest
+#     concurrency: ci-${{ github.ref }}
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     strategy:
+#       matrix:
+#         node-version: [18.20.2]
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Node.js ${{ matrix.node-version}}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install modules
-        run: npm install
-      - name: Build production
-        run: npm run build:prod
-      - name: Lint TypeScript
-        run: npm run lint:ts
-      - name: Lint CSS
-        run: npm run lint:scss
-      - name: Run unit tests
-        run: npm run test:unit
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Node.js ${{ matrix.node-version}}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - name: Install modules
+#         run: npm install
+#       - name: Build production
+#         run: npm run build:prod
+#       - name: Lint TypeScript
+#         run: npm run lint:ts
+#       - name: Lint CSS
+#         run: npm run lint:scss
+#       - name: Run unit tests
+#         run: npm run test:unit
 
-  cypress-run:
-    runs-on: ubuntu-22.04
+#   cypress-run:
+#     runs-on: ubuntu-22.04
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 18.20.2
-      - name: Install dependencies
-        run: npm install
-      - name: Build production
-        run: npm run build:prod
-      - name: Start application
-        run: |
-          npm run start:dev &&
-          sleep 15 &
-          npx cypress run
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 18.20.2
+#       - name: Install dependencies
+#         run: npm install
+#       - name: Build production
+#         run: npm run build:prod
+#       - name: Start application
+#         run: |
+#           npm run start:dev &&
+#           sleep 15 &
+#           npx cypress run

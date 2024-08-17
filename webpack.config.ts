@@ -18,9 +18,9 @@ export default (env: EnvVariables) => {
   }
 
   const config: webpack.Configuration = buildWebpack({
-    port: env.port ?? 3000,
+    port: env.port ?? 3003,
     mode: env.mode ?? 'development',
-    apiUrl: 'http://localhost:8002',
+    apiUrl: 'http://localhost:8003',
     paths,
   })
 

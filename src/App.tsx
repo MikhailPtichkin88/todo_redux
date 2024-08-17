@@ -1,13 +1,20 @@
 import { useEffect } from 'react'
-import { AppRouter } from '@/modules/AppRouter'
-import { HeaderAppBar, useUserStore } from '@/modules/HeaderAppBar'
+import { AppRouter } from '@/providers/AppRouter'
+import {
+  authSliceActions,
+  getIsInited,
+  HeaderAppBar,
+} from '@/modules/HeaderAppBar'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from './providers/StoreProvider'
 
 export const App = () => {
-  const { _inited, mockMeRequest } = useUserStore()
+  const isInited = useSelector(getIsInited)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (!_inited) {
-      mockMeRequest()
+    if (!isInited) {
+      dispatch(authSliceActions.mockMeRequest())
     }
   }, [])
 
