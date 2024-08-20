@@ -6,13 +6,13 @@ import React from 'react'
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    decorators: [
-      (Story: StoryFn) => (
-        <BrowserRouter>
-          <Story />
-        </BrowserRouter>
-      ),
-    ],
+    // decorators: [
+    //   (Story: StoryFn) => (
+    //     <BrowserRouter>
+    //       <Story />
+    //     </BrowserRouter>
+    //   ),
+    // ],
     controls: {
       matchers: {
         color: /(background|color)$/i,

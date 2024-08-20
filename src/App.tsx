@@ -7,14 +7,19 @@ import {
 } from '@/modules/HeaderAppBar'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from './providers/StoreProvider'
+import { USER_LOCALSTORAGE_KEY } from './shared/const/localstorage'
 
 export const App = () => {
   const isInited = useSelector(getIsInited)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
+    // mock "me" request
     if (!isInited) {
-      dispatch(authSliceActions.mockMeRequest())
+      const data = localStorage.getItem(USER_LOCALSTORAGE_KEY)
+      if (data) {
+        dispatch(authSliceActions.updateUserData(JSON.parse(data)))
+      }
     }
   }, [])
 

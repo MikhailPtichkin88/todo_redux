@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import { authSliceActions, getIsInited } from '@/modules/HeaderAppBar'
 import { toast } from 'sonner'
 import { useAppDispatch } from '@/providers/StoreProvider'
+import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 
 export const LoginForm = () => {
   const isInited = useSelector(getIsInited)
@@ -36,7 +37,8 @@ export const LoginForm = () => {
       if (!userData) {
         return toast.error(`error`)
       }
-      dispatch(authSliceActions.updateUserDate(userData))
+      dispatch(authSliceActions.updateUserData(userData))
+      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(userData))
       toast.success(`You have successfully ${type}`)
       reset()
       navigate('/')

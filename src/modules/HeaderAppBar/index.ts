@@ -1,5 +1,5 @@
 export { HeaderAppBar } from './ui/HeaderAppBar'
 export type { IUser, IAuthSchema } from './model/types/types'
 export { authSliceActions, authSliceReducer } from './model/slice/authSlice'
-export { getIsInited } from './model/selectors/getIsInited'
-export { getUserData } from './model/selectors/getUserData'
+export { getIsInited } from './model/selectors/getIsInited/getIsInited'
+export { getUserData } from './model/selectors/getUserData/getUserData'

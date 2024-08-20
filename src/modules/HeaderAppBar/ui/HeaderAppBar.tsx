@@ -5,10 +5,10 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { ProfileAvatar } from '@/components/ProfileAvatar/ui/ProfileAvatar'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { getIsInited } from '../model/selectors/getIsInited'
+import { getIsInited } from '../model/selectors/getIsInited/getIsInited'
 import { useAppDispatch } from '@/providers/StoreProvider'
 import { authSliceActions } from '../model/slice/authSlice'
-import { getUserData } from '../model/selectors/getUserData'
+import { getUserData } from '../model/selectors/getUserData/getUserData'
 
 export const HeaderAppBar = () => {
   const isInited = useSelector(getIsInited)

@@ -45,6 +45,7 @@ const config: Config = {
   // A set of global variables that need to be available in all test environments
   globals: {
     __API__: 'http://localhost',
+    __IS_DEV__: true,
   },
   transformIgnorePatterns: ['node_modules/(?!variables/.*)'],
   moduleNameMapper: {
@@ -52,6 +53,8 @@ const config: Config = {
     '\\.png$': '<rootDir>/src/shared/tests/jestEmptyComponent.tsx',
     '@/(.*)$': '<rootDir>/src/$1',
   },
+  setupFilesAfterEnv: ['<rootDir>/src/shared/tests/setupTests.ts'],
+
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
