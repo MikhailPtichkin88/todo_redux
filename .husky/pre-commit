@@ -3,7 +3,7 @@
 
 # Run lint-staged
 npm run build:prod
-# npm run test:unit
+npm run test:unit
 # npm run start:dev &
 
 # sleep 10

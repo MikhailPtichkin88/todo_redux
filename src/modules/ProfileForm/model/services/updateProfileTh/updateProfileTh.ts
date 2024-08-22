@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { IProfileData } from '../types/types'
 import { IThunkConfig } from '@/providers/StoreProvider'
+import { IProfileData } from '../../types/types'
 
 interface IData {
   userId: string
@@ -16,7 +16,7 @@ export const updateProfileTh = createAsyncThunk<
   try {
     const res = await extra.api.patch<IProfileData>(`/user/${userId}`, data)
     if (!res.data) {
-      throw new Error()
+      return rejectWithValue('incorrect data')
     }
     return res.data
   } catch (e) {

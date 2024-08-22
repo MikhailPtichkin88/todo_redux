@@ -30,9 +30,8 @@ jobs:
         run: npm run lint:ts
       - name: Lint CSS
         run: npm run lint:scss
-#       - name: Run unit tests
-#         run: npm run test:unit
-
+      - name: Run unit tests
+        run: npm run test:unit
 #   cypress-run:
 #     runs-on: ubuntu-22.04
 

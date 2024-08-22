@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IProfileData, IProfileSchema } from '../types/types'
-import { fetchProfileTh } from '../services/fetchProfileTh'
-import { updateProfileTh } from '../services/updateProfileTh'
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { toast } from 'sonner'
+import { fetchProfileTh } from '../services/fetchProfileTh/fetchProfileTh'
+import { updateProfileTh } from '../services/updateProfileTh/updateProfileTh'
 
 const initialState: IProfileSchema = {
   profile: undefined,

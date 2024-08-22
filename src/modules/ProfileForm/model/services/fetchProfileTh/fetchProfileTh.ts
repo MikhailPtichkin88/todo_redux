@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { IProfileData } from '../types/types'
 import { IThunkConfig } from '@/providers/StoreProvider'
+import { IProfileData } from '../../types/types'
 
 interface IParams {
   userId: string

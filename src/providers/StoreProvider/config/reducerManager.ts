@@ -14,11 +14,8 @@ export function createReducerManager(
   let combinedReducer = combineReducers(reducers)
 
   let keysToRemove: TStateSchemaKey[] = []
-  // const mountedReducers: TMountedReducers = {}
 
   return {
-    // getReducerMap: () => reducers,
-    // getMountedReducers: () => mountedReducers,
     reduce: (state: IStateSchema, action: Action) => {
       if (keysToRemove.length > 0) {
         state = { ...state }
@@ -27,7 +24,6 @@ export function createReducerManager(
         }
         keysToRemove = []
       }
-
       return combinedReducer(state, action)
     },
 
@@ -35,9 +31,7 @@ export function createReducerManager(
       if (!key || reducers[key]) {
         return
       }
-
       reducers[key] = reducer
-      // mountedReducers[key] = true
       combinedReducer = combineReducers(reducers)
     },
 
@@ -45,11 +39,8 @@ export function createReducerManager(
       if (!key || !reducers[key]) {
         return
       }
-
       delete reducers[key]
-      // mountedReducers[key] = false
       keysToRemove.push(key)
-
       combinedReducer = combineReducers(reducers)
     },
   }

@@ -1,7 +1,5 @@
 import { getUserData } from '@/modules/HeaderAppBar'
-import { DynamicModuleLoader } from '@/providers/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@/providers/StoreProvider'
-import { TReducersList } from '@/shared/types/types'
 import { Button } from '@/ui/Button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/ui/Card'
 import { LabeledInput } from '@/ui/Input'
@@ -12,11 +10,10 @@ import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { getProfileData } from '../model/selectors/getProfileData/getProfileData'
 import { getProfileIsLoading } from '../model/selectors/getProfileIsLoading/getProfileIsLoading'
-import { fetchProfileTh } from '../model/services/fetchProfileTh'
-import { updateProfileTh } from '../model/services/updateProfileTh'
-import { profileSliceReducer } from '../model/slice/profileSlice'
+import { fetchProfileTh } from '../model/services/fetchProfileTh/fetchProfileTh'
 import { IProfileData } from '../model/types/types'
 import cls from './ProfileForm.module.scss'
+import { updateProfileTh } from '../model/services/updateProfileTh/updateProfileTh'
 
 export const ProfileForm = () => {
   const initialUserData = useSelector(getUserData)

@@ -1,4 +1,4 @@
-import { LoginPage } from '@/pages/Login'
+import { LoginPage } from '@/pages/LoginPage'
 import { MainPage } from '@/pages/Main'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { ProfilePage } from '@/pages/ProfilePage'

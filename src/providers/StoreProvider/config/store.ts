@@ -22,7 +22,6 @@ export function createReduxStore(
 ) {
   const rootReducer: ReducersMapObject<IStateSchema> = {
     ...asyncReducers,
-
     auth: authSliceReducer,
     [rtkApi.reducerPath]: rtkApi.reducer,
     // profile: profileSliceReducer,

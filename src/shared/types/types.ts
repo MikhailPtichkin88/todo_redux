@@ -17,8 +17,3 @@ export type DeepPartial<T> = T extends object
 export type TReducersList = {
   [name in TStateSchemaKey]?: Reducer<NonNullable<IStateSchema[name]>>
 }
-
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//  export type TOptionalRecord<K extends keyof any, T> = {
-//     [P in K]?: T
-//   }

@@ -6,7 +6,7 @@ export interface ILoginData {
   password: string
 }
 
-const authApi = rtkApi.injectEndpoints({
+export const authApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     login: build.mutation<IUser, ILoginData>({
       query: (data) => ({

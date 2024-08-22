@@ -21,12 +21,20 @@ export const LoginForm = () => {
 
   const {
     register,
+    trigger,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<ILoginData>({ mode: 'onBlur' })
 
   const onSubmit = async (data: ILoginData, type: 'login' | 'register') => {
+    console.log(errors)
+    await trigger()
+    if (Object.keys(errors).length > 0) {
+      console.log(errors)
+      return
+    }
+
     try {
       let userData
       if (type === 'login') {
@@ -70,7 +78,7 @@ export const LoginForm = () => {
             id="email"
             placeholder="Enter your email"
             {...register('email', {
-              required: true,
+              required: 'email required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'invalid email address',
@@ -89,6 +97,7 @@ export const LoginForm = () => {
             id="password"
             placeholder="Enter your password"
             {...register('password', {
+              required: 'password required',
               minLength: {
                 value: 5,
                 message: 'password is less than 5 symbols',
