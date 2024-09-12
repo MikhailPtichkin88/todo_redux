@@ -4,10 +4,13 @@ import { IAuthSchema } from '@/modules/HeaderAppBar'
 import { IProfileSchema } from '@/modules/ProfileForm'
 import { rtkApi } from '@/shared/api/rtkApi'
 import { Action, EnhancedStore, Reducer } from '@reduxjs/toolkit'
+import { ITodoListsSchema } from '@/modules/TodoLists'
+import { ITasksSchema } from '@/modules/Tasks'
 
 export interface IStateSchema {
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
-
+  todos: ITodoListsSchema
+  tasks: ITasksSchema
   //async
   profile?: IProfileSchema
   auth?: IAuthSchema

@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Checkbox>
 
 const Template = (
   args: React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
-    className: string
+    className?: string
   }
 ) => {
   return <Checkbox {...args} />

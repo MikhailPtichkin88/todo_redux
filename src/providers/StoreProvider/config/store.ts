@@ -11,6 +11,8 @@ import {
 import { useDispatch } from 'react-redux'
 import { authSliceReducer } from '@/modules/HeaderAppBar'
 import { createReducerManager } from './reducerManager'
+import { todoListsReducer } from '@/modules/TodoLists'
+import { tasksReducer } from '@/modules/Tasks'
 
 const extraArg: IThunkExtraArg = {
   api: $api,
@@ -23,7 +25,10 @@ export function createReduxStore(
   const rootReducer: ReducersMapObject<IStateSchema> = {
     ...asyncReducers,
     auth: authSliceReducer,
+    todos: todoListsReducer,
+    tasks: tasksReducer,
     [rtkApi.reducerPath]: rtkApi.reducer,
+
     // profile: profileSliceReducer,
   }
 

@@ -28,10 +28,12 @@ export const HeaderAppBar = () => {
           <NavLink to={'/'} data-testid="LogoLink">
             <div className="flex items-center gap-[5px]">
               <img
+                width={42}
+                height={42}
                 src={`${typeof logoIcon === 'function' ? '' : logoIcon}`}
                 alt="logo internet icon"
               />
-              <span className="font-medium text-[20px]">Maps</span>
+              <span className="font-medium text-[20px]">Todo</span>
             </div>
           </NavLink>
 

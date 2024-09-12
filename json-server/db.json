@@ -27,21 +27,116 @@
       "id": "4mPL8IP"
     }
   ],
-  "address_list": [
+  "lists": [
     {
-      "address": "Большая Черкизовская улица, Москва, Россия",
-      "coordinates": [55.798465, 37.729853],
-      "id": 1
+      "id": 2,
+      "name": "Work",
+      "completed": false,
+      "taskIds": [5, 6, 7, 8]
     },
     {
-      "address": "метро Академическая, Калужско-Рижская линия, Москва, Россия",
-      "coordinates": [55.68766, 37.573348],
-      "id": 2
-    },
-    {
-      "address": "метро Тимирязевская, Серпуховско-Тимирязевская линия, Москва, Россия",
-      "coordinates": [55.8187, 37.57528],
+      "name": "todo todo list",
+      "taskIds": [13, 14, 15],
+      "completed": false,
       "id": 3
+    },
+    {
+      "name": "Todo 1",
+      "taskIds": [16, 17, 18, 19],
+      "completed": false,
+      "id": 5
+    }
+  ],
+  "tasks": [
+    {
+      "id": 5,
+      "name": "Finish project report",
+      "completed": false,
+      "listId": 2
+    },
+    {
+      "id": 6,
+      "name": "Email client",
+      "completed": true,
+      "listId": 2
+    },
+    {
+      "id": 7,
+      "name": "Team meeting",
+      "completed": true,
+      "listId": 2
+    },
+    {
+      "id": 8,
+      "name": "Update website",
+      "completed": false,
+      "listId": 2
+    },
+    {
+      "name": "task 1",
+      "listId": 3,
+      "completed": false,
+      "id": 9
+    },
+    {
+      "name": "task 1",
+      "listId": 3,
+      "completed": false,
+      "id": 10
+    },
+    {
+      "name": "create",
+      "listId": 3,
+      "completed": false,
+      "id": 11
+    },
+    {
+      "name": "ывафыва",
+      "listId": 3,
+      "completed": false,
+      "id": 12
+    },
+    {
+      "name": "скуфе 1",
+      "listId": 3,
+      "completed": false,
+      "id": 13
+    },
+    {
+      "name": "вася",
+      "listId": 3,
+      "completed": true,
+      "id": 14
+    },
+    {
+      "name": "fdkjlkjsdf sdfsdf",
+      "listId": 3,
+      "completed": false,
+      "id": 15
+    },
+    {
+      "name": "dfsss",
+      "listId": 5,
+      "completed": false,
+      "id": 16
+    },
+    {
+      "name": "sdfsdf",
+      "listId": 5,
+      "completed": false,
+      "id": 17
+    },
+    {
+      "name": "sdfdsf",
+      "listId": 5,
+      "completed": false,
+      "id": 18
+    },
+    {
+      "name": "sdfsdf",
+      "listId": 5,
+      "completed": false,
+      "id": 19
     }
   ]
 }
