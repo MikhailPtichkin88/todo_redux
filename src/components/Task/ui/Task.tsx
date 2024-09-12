@@ -4,7 +4,7 @@ import { memo, useCallback, useState } from 'react'
 import { updateTaskTh } from '../model/services/updateTaskTh'
 import { deleteTaskTh } from '../model/services/deleteTaskTh'
 import { EditableSpan } from '@/components/EditableSpan'
-import { Trash2Icon } from 'lucide-react'
+import { GrabIcon, Trash2Icon } from 'lucide-react'
 
 interface ITaskProps {
   id: number
@@ -54,6 +54,7 @@ export const Task = memo(({ id, name, listId, completed }: ITaskProps) => {
         value={name}
         onInputChange={onChangeTaskName}
       />
+      <GrabIcon className="cursor-grab" />
       <Trash2Icon
         stroke="darkorange"
         className={`min-w-[24px] cursor-pointer ${isDisabledClass}`}

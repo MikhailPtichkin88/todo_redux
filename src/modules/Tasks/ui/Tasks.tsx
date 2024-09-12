@@ -18,8 +18,7 @@ export const Tasks = ({ taskIds }: ITasksProps) => {
   const isLoading = useSelector(getTasksIsLoading)
   if (isLoading) {
     return (
-      <div className="flex w-full justify-center items-center">
-        {' '}
+      <div className="flex w-full h-[100px] justify-center items-center">
         <Loader />
       </div>
     )

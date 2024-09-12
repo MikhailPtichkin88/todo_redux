@@ -2,7 +2,7 @@ import { EditableSpan } from '@/components/EditableSpan'
 import { useAppDispatch } from '@/providers/StoreProvider'
 import { Card } from '@/ui/Card'
 import { updateTodoTh } from '../model/services/updateTodoTh'
-import { Trash2Icon } from 'lucide-react'
+import { GripVertical, Trash2Icon } from 'lucide-react'
 import { useState } from 'react'
 import { ConfirmBlock } from '@/ui/ConfirmBlock'
 import { deleteTodoTh } from '../model/services/deleteTodoTh'
@@ -52,37 +52,42 @@ export const TodoList = ({
 
   return (
     <Card className={styles.card}>
-      <div className={styles.titleBlock}>
-        <EditableSpan
-          isTitle
-          value={name}
-          onInputChange={onChangeTodoName}
-          className={styles.editableSpan}
-        />
+      <div className="flex items-center">
+        <GripVertical className="mr-[10px]" />
+        <div className="mb-auto">
+          <div className={styles.titleBlock}>
+            <EditableSpan
+              isTitle
+              value={name}
+              onInputChange={onChangeTodoName}
+              className={styles.editableSpan}
+            />
 
-        <div className="flex items-center gap-[10px]">
-          {showConfirm ? (
-            <ConfirmBlock
-              isLoading={loading}
-              onOkHandler={onDeleteTodo}
-              onCancel={() => setShowConfirm(false)}
-            />
-          ) : (
-            <Trash2Icon
-              stroke="darkorange"
-              className="cursor-pointer"
-              onClick={() => setShowConfirm(true)}
-            />
-          )}
+            <div className="flex items-center gap-[10px]">
+              {showConfirm ? (
+                <ConfirmBlock
+                  isLoading={loading}
+                  onOkHandler={onDeleteTodo}
+                  onCancel={() => setShowConfirm(false)}
+                />
+              ) : (
+                <Trash2Icon
+                  stroke="darkorange"
+                  className="cursor-pointer"
+                  onClick={() => setShowConfirm(true)}
+                />
+              )}
+            </div>
+          </div>
+          <hr />
+          <CreateTask todoId={todoId} className={styles.createTask} />
+          <Tasks
+            taskIds={taskIds}
+            onAddTask={onAddTask}
+            onDeleteTask={onDeleteTask}
+          />
         </div>
       </div>
-      <hr />
-      <CreateTask todoId={todoId} className={styles.createTask} />
-      <Tasks
-        taskIds={taskIds}
-        onAddTask={onAddTask}
-        onDeleteTask={onDeleteTask}
-      />
     </Card>
   )
 }

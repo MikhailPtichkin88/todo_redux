@@ -75,6 +75,8 @@
     @apply border-border;
   }
   body {
+    min-height: 100vh;
+    position: relative;
     font-family: Museo Sans Cyrl, sans-serif;
     font-weight: 500;
     @apply bg-background text-foreground;
